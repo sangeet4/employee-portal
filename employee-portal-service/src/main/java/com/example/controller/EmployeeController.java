@@ -3,6 +3,8 @@ package com.example.controller;
 import com.example.domain.Employee;
 import com.example.exception.InvalidEmployeeException;
 import com.example.service.EmployeeService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @ApiOperation(value="View all Employees' Details", response = Iterable.class)
     @GetMapping(value = "all")
     public ResponseEntity<?> getAllEmployees(){
         try{
@@ -31,6 +34,7 @@ public class EmployeeController {
         }
     }
 
+    @ApiOperation(value="Save Employee's Details", response = Employee.class)
     @PostMapping(value = "add")
     public ResponseEntity<?> saveEmployee(@Valid @RequestBody Employee employee){
         try{

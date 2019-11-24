@@ -1,5 +1,7 @@
 package com.example.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
@@ -10,16 +12,21 @@ public class Employee {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(notes = "First Name of Employee", required = true)
     @NotBlank(message = "First Name cannot be blank")
     private String firstName;
 
+    @ApiModelProperty(notes = "Last Name of Employee")
     private String lastName;
 
+    @ApiModelProperty(notes = "Gender of Employee: MALE, FEMALE, OR OTHER")
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @ApiModelProperty(notes = "D.O.B. of Employee. Should always be in format: YYYY-MM-DD")
     private LocalDate dob;
 
+    @ApiModelProperty(notes = "Department of Employee")
     private String department;
 
     public Employee() { }
