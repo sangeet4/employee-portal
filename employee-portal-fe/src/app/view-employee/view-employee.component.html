@@ -1,0 +1,24 @@
+<header><h2>Employee List</h2></header>
+<section>
+  <table class="table table-striped" *ngIf="employees != undefined && employees.length > 0">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.gender }}</td>
+        <td>{{ employee.dob }}</td>
+        <td>{{ employee.department }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 *ngIf="employees != undefined && employees.length === 0">No Employee Data avialable.</h3>
+</section>
