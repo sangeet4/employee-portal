@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   genderAllowed = ['MALE', 'FEMALE', 'OTHERS'];
   employeeForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) { }
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
     this.employeeForm = this.fb.group({
@@ -35,12 +36,15 @@ export class RegisterComponent implements OnInit {
       ? null : this.employeeForm.value.gender,
       this.convertDateObjectToJacksonExpected(this.employeeForm.value.dob), 
       this.employeeForm.value.department);
-    console.log(submitEmployee);
     this.employeeService.saveEmployee(submitEmployee)
       .subscribe(data => {
-        console.log(data);
+        if(data.firstName === submitEmployee.firstName){
+          console.log("POST_SUCCESS");
+          this.router.navigate(['/employee']);
+        }
+        else
+          console.log("POST_FAILED")
       })
-    
   }
 
   convertDateObjectToJacksonExpected(date : any) : String{
