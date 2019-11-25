@@ -1,12 +1,13 @@
-<header><h2>Employee List</h2></header>
+<header>
+  <h2>Register Employee</h2>
+</header>
 <form class="employee-form" [formGroup]="employeeForm">
-  <div class="form-row">
+  <div class="form-row row">
     <div class="form-group col-md-6">
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First name" 
-        formControlName="firstName" required>
-      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-        class="alert alert-danger">
+      <input type="text" class="form-control" id="firstName" placeholder="First name" formControlName="firstName"
+        required>
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
         <div *ngIf="firstName.errors.required">
           First Name is required.
         </div>
@@ -14,11 +15,10 @@
     </div>
     <div class="form-group col-md-6">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last name" 
-        formControlName="lastName">
+      <input type="text" class="form-control" id="lastName" placeholder="Last name" formControlName="lastName">
     </div>
   </div>
-  <div class="form-row">
+  <div class="form-row row">
     <div class="form-group col-md-6">
       <label for="gender">Gender</label>
       <select class="form-control" id="gender" formControlName="gender">
@@ -43,14 +43,14 @@
       </div>
     </div>
   </div>
-  <div class="form-row">
+  <div class="form-row row">
     <div class="form-group col">
       <label for="department">Department</label>
       <input type="text" class="form-control" id="department" placeholder="Department" formControlName="department">
     </div>
   </div>
   <div class="submit">
-      <button class="btn btn-success" type="submit" (click)="onSubmit()" [disabled]="!employeeForm.valid">Submit</button>
-      <button class="btn btn-secondary" type="reset">Reset</button>
+    <button class="btn btn-success" type="submit" (click)="onSubmit()" [disabled]="!employeeForm.valid">Submit</button>
+    <button class="btn btn-secondary" type="reset">Reset</button>
   </div>
 </form>
