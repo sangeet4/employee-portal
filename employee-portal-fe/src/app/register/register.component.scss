@@ -1,9 +1,14 @@
 header{
     padding: 0.5rem;
 }
-
-.submit{
-    button{
-        margin-right: 0.5rem;
+.employee-form{
+    width: auto;
+}
+form{
+    padding: 0.5rem;
+    .submit{
+        button{
+            margin-right: 0.5rem;
+        }
     }
 }
